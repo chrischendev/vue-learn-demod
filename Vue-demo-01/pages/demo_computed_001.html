@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和监听器练习1</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-text="msg"></a>
+    <div>
+        姓：<input v-model="firstName"/><br>
+        名：<input v-model="lastName"/><br>
+        姓名 ：<a v-text="fullName">{{fullName}}</a><br>
+        <div>{{count}}</div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: '计算属性和监听器测试',
+            firstName: 'chen',
+            lastName: 'chris',
+            count: 0
+
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName;
+            }
+        },
+        watch: {
+            fullName: function () {
+                this.count++;
+            },
+        }
+    })
+</script>
+</body>
+</html>

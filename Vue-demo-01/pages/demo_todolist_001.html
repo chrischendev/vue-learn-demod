@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist练习1</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-text="msg"></a><br>
+    <input v-model="name"/>
+    <button @click="handleSubmit">添加</button>
+    <br>
+    <ul>
+        <li v-for="(item,index) of stuList" :key="index">姓名：{{item.name}}，年龄：{{item.age}}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: 'todolist练习1',
+            name: '',
+            stu: {'name': '', 'age': 25},
+            stuList: [
+                {'name': '张三', 'age': 12},
+                {'name': '莉莉', 'age': 14},
+                {'name': '陈琼', 'age': 11}
+            ]
+
+        },
+        methods: {
+            handleSubmit: function () {
+                //this.stu=({'name':this.name,'age':25})
+                //this.stuList.push(this.stu)
+                this.stuList.push({'name': this.name, 'age': 20})
+                this.name = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

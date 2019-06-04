@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件练习1</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-text="msg"></a><br>
+    <input v-model="name"/>
+    <button @click="handleSubmit">添加</button>
+    <br>
+    <ul>
+        <!--<li v-for="(item,index) of stuList" :key="index">姓名：{{item.name}}，年龄：{{item.age}}</li>-->
+        <todo-item v-for="(item,index) of stuList" :key="index" :content="item"></todo-item>
+
+    </ul>
+</div>
+
+<script>
+    Vue.component('todo-item', {
+        props: ['content'],
+        template: '<li @click="clickHandle(content)">姓名：{{content.name}}，年龄：{{content.age}}</li>',
+        methods: {
+            clickHandle: function (env) {
+                alert(env.name)
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            msg: '组件练习1',
+            name: '',
+            stu: {'name': '', 'age': 25},
+            stuList: [
+                {'name': '张三', 'age': 12},
+                {'name': '莉莉', 'age': 14},
+                {'name': '陈琼', 'age': 11}
+            ]
+
+        },
+        methods: {
+            handleSubmit: function () {
+                //this.stu=({'name':this.name,'age':25})
+                //this.stuList.push(this.stu)
+                this.stuList.push({'name': this.name, 'age': 20})
+                this.name = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

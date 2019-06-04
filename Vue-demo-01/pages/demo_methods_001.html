@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Method练习1</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-text="msg"></a>
+    <div>
+        <button  v-on:click="onClick1">调用方法1</button><br>
+        <button  @click="onClick1">调用方法2</button><br>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: '方法调用测试'
+        },
+        methods: {
+            onClick1: function () {
+                alert('谢谢')
+            }
+        }
+    })
+</script>
+</body>
+</html>

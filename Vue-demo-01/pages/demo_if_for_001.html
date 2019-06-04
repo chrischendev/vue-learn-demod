@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if v-show v-for练习1</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <a v-text="msg"></a>
+    <div v-if="toggle">
+        显示了
+    </div>
+    <br>
+    <div v-show="toggle">
+        有显示了
+    </div>
+    <br>
+    <button @click="change">开关</button>
+    <br>
+    <ul>
+        <li v-for="(item,index) of stuList" :key="index">姓名：{{item.name}}，年龄：{{item.age}}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: 'v-if v-show v-for练习1',
+            toggle: false,
+            stuList: [
+                {'name': '张三', 'age': 12},
+                {'name': '莉莉', 'age': 14},
+                {'name': '陈琼', 'age': 11}
+            ]
+
+        },
+        methods: {
+            change: function () {
+                this.toggle = !this.toggle;
+            }
+        }
+    })
+</script>
+</body>
+</html>
