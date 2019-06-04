@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由测试01</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+<!--    <h1>{{info}}</h1>-->
+    <hr>
+    <p>
+        <router-link to="/foo">Go to foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+<script>
+    const Foo = {template: '<div>foo</div>'}
+    const Bar = {template: '<div>bar</div>'}
+    const routers = [
+        {path: '/foo', comment: Foo},
+        {path: '/bar', comment: Bar}
+    ]
+
+    const router = new VueRouter({
+        routers
+    })
+
+    const app = new Vue({
+        router
+    }).$mount('#app')
+
+
+    // new Vue({
+    //     el: '#app',
+    //     data: {
+    //         info: '路由router测试'
+    //     },
+    //     router
+    // })
+</script>
+</body>
+</html>
